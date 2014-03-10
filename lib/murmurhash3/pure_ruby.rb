@@ -111,7 +111,7 @@ module MurmurHash3
       h1 = h2 = seed
       fast_part = ((str.bytesize / 16) * 16)
       numbers = str.byteslice(0, fast_part).unpack('Q<*')
-      tail = str.byteslice(fast_part, str.bytesize - fast_part).unpack('C*')
+      tail = str.byteslice(fast_part, str.bytesize - fast_part).unpack('c*')
 
       numbers.each_slice(2) do |k1, k2|
         h1 ^= murmur3_128__mmix1(k1)
@@ -134,7 +134,7 @@ module MurmurHash3
         end
         k1 = 0
         tail[0,8].reverse_each do |c1|
-          k1 = (k1 << 8) | c1
+          k1 = (k1 << 8) ^ c1
         end
         h1 ^= murmur3_128__mmix1(k1)
       end

@@ -259,23 +259,23 @@ static void MurmurHash3_x64_128 ( const void * key, const long len,
 
   switch(len & 15)
   {
-  case 15: k2 ^= (uint64_t)(data[14]) << 48;
-  case 14: k2 ^= (uint64_t)(data[13]) << 40;
-  case 13: k2 ^= (uint64_t)(data[12]) << 32;
-  case 12: k2 ^= (uint64_t)(data[11]) << 24;
-  case 11: k2 ^= (uint64_t)(data[10]) << 16;
-  case 10: k2 ^= (uint64_t)(data[ 9]) << 8;
-  case  9: k2 ^= (uint64_t)(data[ 8]) << 0;
+  case 15: k2 ^= (int64_t)(signed char)(data[14]) << 48;
+  case 14: k2 ^= (int64_t)(signed char)(data[13]) << 40;
+  case 13: k2 ^= (int64_t)(signed char)(data[12]) << 32;
+  case 12: k2 ^= (int64_t)(signed char)(data[11]) << 24;
+  case 11: k2 ^= (int64_t)(signed char)(data[10]) << 16;
+  case 10: k2 ^= (int64_t)(signed char)(data[ 9]) << 8;
+  case  9: k2 ^= (int64_t)(signed char)(data[ 8]) << 0;
            h2 ^= mmix128_2(k2);
 
-  case  8: k1 ^= (uint64_t)(data[ 7]) << 56;
-  case  7: k1 ^= (uint64_t)(data[ 6]) << 48;
-  case  6: k1 ^= (uint64_t)(data[ 5]) << 40;
-  case  5: k1 ^= (uint64_t)(data[ 4]) << 32;
-  case  4: k1 ^= (uint64_t)(data[ 3]) << 24;
-  case  3: k1 ^= (uint64_t)(data[ 2]) << 16;
-  case  2: k1 ^= (uint64_t)(data[ 1]) << 8;
-  case  1: k1 ^= (uint64_t)(data[ 0]) << 0;
+  case  8: k1 ^= (int64_t)(signed char)(data[ 7]) << 56;
+  case  7: k1 ^= (int64_t)(signed char)(data[ 6]) << 48;
+  case  6: k1 ^= (int64_t)(signed char)(data[ 5]) << 40;
+  case  5: k1 ^= (int64_t)(signed char)(data[ 4]) << 32;
+  case  4: k1 ^= (int64_t)(signed char)(data[ 3]) << 24;
+  case  3: k1 ^= (int64_t)(signed char)(data[ 2]) << 16;
+  case  2: k1 ^= (int64_t)(signed char)(data[ 1]) << 8;
+  case  1: k1 ^= (int64_t)(signed char)(data[ 0]) << 0;
            h1 ^= mmix128_1(k1);
   };
 
